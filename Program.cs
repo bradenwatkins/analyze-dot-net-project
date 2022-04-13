@@ -94,8 +94,8 @@ namespace AnalyzeDotNetProject
             }
 
             if (children.Any() ||
-                ((string.IsNullOrWhiteSpace(dependencyFilter) || projectLibrary.Name.ToLower() == dependencyFilter.ToLower()) &&
-                 (string.IsNullOrWhiteSpace(versionFilter) || projectLibrary.Version.ToString() == versionFilter)))
+                ((string.IsNullOrWhiteSpace(dependencyFilter) || projectLibrary.Name.ToLower().Contains(dependencyFilter.ToLower())) &&
+                 (string.IsNullOrWhiteSpace(versionFilter) || projectLibrary.Version.ToString().Contains(versionFilter))))
             {
                 return children.Prepend($"{new String(' ', indentLevel * 2)}{projectLibrary.Name}, v{projectLibrary.Version}");
             }
